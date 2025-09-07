@@ -1,0 +1,15 @@
+{% extends "pages/base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1>{{ product.name }}</h1>
+  
+  {% if product.image %}
+    <img src="{{ product.image.url }}" alt="{{ product.name }}" width="300">
+  {% endif %}
+  
+  <p>{{ product.description }}</p>
+  <p><strong>Price:</strong> ${{ product.price }}</p>
+  <p><strong>Stock:</strong> {{ product.stock }}</p>
+</div>
+{% endblock %}

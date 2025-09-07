@@ -1,0 +1,28 @@
+{% extends "pages/base.html" %}
+{% load static %} 
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/products.css' %}">
+
+<div class="container">
+  <h1>Our Products</h1>
+  <div class="product-list">
+    {% for product in items %}
+      <div class="product-card">
+        <a href="{% url 'product' product.id %}">
+          {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+          {% else %}
+            <img src="https://via.placeholder.com/250x180" alt="No image">
+          {% endif %}
+          <h2>{{ product.name }}</h2>
+        </a>
+        <p>{{ product.description|truncatewords:15 }}</p>
+        <p><strong>${{ product.price }}</strong></p>
+      </div>
+    {% empty %}
+      <p>No products available yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
