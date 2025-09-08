@@ -1,0 +1,10 @@
+{% extends "pages/base.html" %}
+
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ Lf }}
+    <input type="submit" value="Login">
+</form>
+{% endblock %}
